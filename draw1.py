@@ -4,8 +4,9 @@ import sys
 f=open("best_alloc.txt","w")
 f.write("this is the file for seeing the number of best allocations : \n")
 while (1):
-
+	g=0
 	rooms = list()
+	first_pref=list()
 
 	def zerofunc(t,r):
 		global rooms
@@ -15,6 +16,7 @@ while (1):
 					rooms[i][j]=0
 
 	def draw():
+		global g
 		global rooms
 		rand=list()
 		# pref1=[]
@@ -26,12 +28,19 @@ while (1):
 			for j in range (t):
 				pref=int(input(''))
 				rooms[i].append(pref)
+				if(j==0):
+					first_pref.append(pref)
+		
 		for i in rooms:
 			print (i)
+		print(" ")
+		for i in first_pref:
+			print(i)
 
 		for i in range(t):
 			rand.append(i+1)
 		shuffle(rand)
+		print(" ")
 		for i in rand:
 			print(i)
 
@@ -48,7 +57,12 @@ while (1):
 							break
 		for i in range(0,t):
 			print ("preference of student",i+1,"is",pref1[i])
-			f.write("preference of student"+str(i+1)+"is"+str(pref1[i])+"\n")
+			#f.write("preference of student"+str(i+1)+"is"+str(pref1[i])+"\n")
+		for i in range(0,t):
+			if(pref1[i]==first_pref[i]):
+				g+=1
+		print("out of ",t," students ",g," student got their first preference.")
+		f.write(str(t)+"-"+str(g)+"\n")
 	draw()
 	inp1=int(input("want to continue: 1 for yes,0 for no "))
 	if (inp1==0):

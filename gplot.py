@@ -7,7 +7,7 @@ import Gnuplot
 
 data1=[[0,0],[1,1],[2,2],[3,3],[5,5]]
 gp1=Gnuplot.Gnuplot(persist =1)
-gp1('set terminal x11 size 350,255')
+gp1('set terminal x11 size 350,350')
 gp1('set pointsize 3')
 gp1('set font "Times-Roman, 30"')
 gp1('set xlabel "x-axis"')

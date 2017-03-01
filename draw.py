@@ -2,6 +2,7 @@ from random import shuffle
 while (1):
 
 	rooms = list()
+	first_pref=list()
 
 	def zerofunc(t,r):
 		global rooms
@@ -13,6 +14,7 @@ while (1):
 	def draw():
 		global rooms
 		rand=list()
+		
 		# pref1=[]
 		t=int(input("enter the number of students "))
 		pref1=[0 for _ in range(t)]
@@ -22,14 +24,20 @@ while (1):
 			for j in range (t):
 				pref=int(input(''))
 				rooms[i].append(pref)
+				if(j==0):
+					first_pref.append(pref)
+		
 		for i in rooms:
 			print (i)
+		print(" ")
+		for i in first_pref:
+			print(i)
 
 		for i in range(t):
 			rand.append(i+1)
 		shuffle(rand)
-		for i in rand:
-			print(i)
+		#for i in rand:
+		#	print(i)
 
 		for i in range (1,t+1):
 			for j in range(t):
