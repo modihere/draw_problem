@@ -4,7 +4,6 @@ from guuplot import plotter
 f=open("best_alloc.txt","w")
 while (1):
 	g=0
-	h=0
 	rooms = list()
 	first_pref=list()
 
@@ -17,6 +16,7 @@ while (1):
 
 	def draw():
 		global g
+		h=0
 		global rooms
 		rand=list()
 		# pref1=[]

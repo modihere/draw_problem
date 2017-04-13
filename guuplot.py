@@ -16,8 +16,8 @@ def plotter(f):
 		gp1('set font "Times-Roman, 30"')
 		gp1('set xlabel "x-axis"')
 		gp1('set ylabel "y-axis"')
-		gp1('set xrange [0:20]')
-		gp1('set yrange [0:20]')
+		gp1('set xrange [0:50]')
+		gp1('set yrange [0:100]')
 		plot1 = Gnuplot.PlotItems.Data(data1, with_="lines" ,title='best_allocation ')
 		gp1.plot(plot1)
 		epsFilename ='t.eps'
