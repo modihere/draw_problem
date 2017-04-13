@@ -1,10 +1,10 @@
 from random import shuffle
-import sys 
-
+import sys
+from guuplot import plotter
 f=open("best_alloc.txt","w")
-f.write("this is the file for seeing the number of best allocations : \n")
 while (1):
 	g=0
+	h=0
 	rooms = list()
 	first_pref=list()
 
@@ -24,14 +24,13 @@ while (1):
 		pref1=[0 for _ in range(t)]
 		for i in range (t):
 			rooms.append([])
-			print("enter the preference for student number",i+1," ")
 			for j in range (t):
-				pref=int(input(''))
-				rooms[i].append(pref)
-				if(j==0):
-					first_pref.append(pref)
+				rooms[i].append(j+1)
+				shuffle(rooms[i])
+			first_pref.append(rooms[i][0])
 		
 		for i in rooms:
+			print("the preference for student number",h+1," ")
 			print (i)
 		print(" ")
 		for i in first_pref:
@@ -62,10 +61,18 @@ while (1):
 			if(pref1[i]==first_pref[i]):
 				g+=1
 		print("out of ",t," students ",g," student got their first preference.")
-		f.write(str(t)+"-"+str(g)+"\n")
+		f.write(str(t)+" "+str(g)+"\n")
 	draw()
 	inp1=int(input("want to continue: 1 for yes,0 for no "))
 	if (inp1==0):
-		break	
-f.close()
+		f.close()
+		print("\n Do you want a graph of best allocation?")
+		inp2=int(input(" -> 1 for yes,0 for no "))
+		if (inp2==1):
+			f=open("best_alloc.txt","r")
+			plotter(f)
+			break
+		else:
+			break	
+
 	
